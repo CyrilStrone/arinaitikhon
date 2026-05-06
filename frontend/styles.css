@@ -217,6 +217,20 @@ section {
   background: var(--green);
 }
 
+.music-credit {
+  max-width: 310px;
+  margin: -32px auto 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.music-credit a {
+  color: var(--muted);
+  text-decoration-color: rgba(123, 108, 98, 0.35);
+  text-underline-offset: 3px;
+}
+
 .intro p,
 .places p,
 .rsvp p,

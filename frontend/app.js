@@ -2,6 +2,8 @@ const form = document.querySelector("#rsvp-form");
 const message = document.querySelector("#form-message");
 const submitButton = form.querySelector("button[type='submit']");
 const musicButton = document.querySelector(".music-button");
+const musicLabel = document.querySelector(".music-label");
+const weddingMusic = document.querySelector("#wedding-music");
 
 const setMessage = (text, type) => {
   message.textContent = text;
@@ -19,9 +21,26 @@ const collectFormData = () => {
   };
 };
 
-musicButton.addEventListener("click", () => {
-  const nextState = musicButton.getAttribute("aria-pressed") !== "true";
-  musicButton.setAttribute("aria-pressed", String(nextState));
+const setMusicState = (isPlaying) => {
+  musicButton.setAttribute("aria-pressed", String(isPlaying));
+  musicLabel.innerHTML = isPlaying ? "Выключить музыку<br>для атмосферы" : "Включить музыку<br>для атмосферы";
+};
+
+weddingMusic.volume = 0.42;
+
+musicButton.addEventListener("click", async () => {
+  if (weddingMusic.paused) {
+    try {
+      await weddingMusic.play();
+      setMusicState(true);
+    } catch (error) {
+      setMusicState(false);
+    }
+    return;
+  }
+
+  weddingMusic.pause();
+  setMusicState(false);
 });
 
 form.addEventListener("submit", async (event) => {

@@ -275,6 +275,21 @@ https://example.com/sitemap.xml
 https://example.com/sitemap.xml
 ```
 
+## Музыка
+
+Кнопка на первом экране включает свадебную музыку. Используется внешний файл:
+
+```text
+Canon in D Major — Kevin MacLeod
+```
+
+Источник и лицензия:
+
+- `https://commons.wikimedia.org/wiki/File:Kevin_MacLeod_-_Canon_in_D_Major.ogg`
+- `https://creativecommons.org/licenses/by/3.0/`
+
+Лицензия `CC BY 3.0` требует указать автора, поэтому на странице добавлена короткая ссылка-атрибуция под кнопкой музыки.
+
 ## Проверка после первого деплоя
 
 На сервер можно зайти один раз и проверить:
