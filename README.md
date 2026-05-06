@@ -50,6 +50,20 @@ docker compose down
 docker compose down -v
 ```
 
+## Локальная разработка фронта
+
+Обычный `docker compose up --build` копирует фронтенд внутрь Docker-образа. Если поменять `frontend/index.html`, `frontend/styles.css` или `frontend/app.js`, изменения появятся после пересборки.
+
+Для разработки используйте dev-compose с bind mounts:
+
+```powershell
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+```
+
+После этого изменения в `frontend/` подтягиваются контейнером сразу. В браузере обычно достаточно обновить страницу.
+
+Для backend-кода dev-compose не добавляет hot reload: после изменений в `backend/` нужно пересобрать контейнер.
+
 ## `.env`
 
 В репозиторий настоящий `.env` не коммитится. Для VPS есть два варианта.
