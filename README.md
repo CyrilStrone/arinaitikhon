@@ -16,9 +16,7 @@
 
 - `80/tcp` — HTTP, выпуск сертификата и редирект на HTTPS.
 - `443/tcp` — HTTPS-сайт.
-- `22/tcp` — SSH для деплоя.
-
-`8443` не нужен. `acme.sh` тоже не нужен: Caddy сам выпускает и продлевает сертификаты.
+- `${VPS_PORT}/tcp` — SSH для деплоя, например `22/tcp` или ваш кастомный порт.
 
 Не открывать наружу:
 
@@ -175,16 +173,22 @@ chmod 600 /home/deploy/.ssh/authorized_keys
 ### 5. Открыть firewall
 
 ```bash
-ufw allow OpenSSH
+ufw allow 22/tcp
 ufw allow 80/tcp
 ufw allow 443/tcp
 ufw enable
 ufw status verbose
 ```
 
+Если SSH на кастомном порту, вместо `22/tcp` откройте именно его. Например:
+
+```bash
+ufw allow 2222/tcp
+```
+
 Если у VPS-провайдера есть отдельный firewall в панели, там тоже открыть:
 
-- `22/tcp`
+- SSH-порт из `VPS_PORT`
 - `80/tcp`
 - `443/tcp`
 
@@ -213,6 +217,12 @@ VPS_HOST=SERVER_IP
 VPS_USER=deploy
 VPS_PORT=22
 VPS_PROJECT_DIR=/opt/wedding-rsvp
+```
+
+Если SSH на кастомном порту, в `VPS_PORT` укажите его. Например:
+
+```text
+VPS_PORT=2222
 ```
 
 `VPS_SSH_KEY` — приватный ключ целиком, например:
