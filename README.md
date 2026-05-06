@@ -16,7 +16,7 @@
 
 - `80/tcp` — HTTP, выпуск сертификата и редирект на HTTPS.
 - `443/tcp` — HTTPS-сайт.
-- `${VPS_PORT}/tcp` — SSH для деплоя, например `22/tcp` или ваш кастомный порт.
+- `${VPS_PORT}/tcp` — SSH для деплоя. Это должен быть реальный SSH-порт вашего сервера.
 
 Не открывать наружу:
 
@@ -75,6 +75,7 @@ HTTP_PORT=80
 HTTPS_PORT=443
 
 CADDY_SITE_ADDRESS=example.com
+PUBLIC_SITE_URL=https://example.com
 
 POSTGRES_USER=rsvp
 POSTGRES_PASSWORD=change-this-database-password
@@ -85,6 +86,13 @@ ADMIN_PASSWORD=change-this-admin-password
 ```
 
 Замените `example.com` на свой домен. Домен должен иметь `A`-запись на IP сервера.
+
+Если домен кириллический, например `тест.рф`, в `.env` лучше указывать Punycode:
+
+```env
+CADDY_SITE_ADDRESS=xn--e1aybc.xn--p1ai
+PUBLIC_SITE_URL=https://xn--e1aybc.xn--p1ai
+```
 
 Второй вариант: создать `/opt/wedding-rsvp/.env` на сервере один раз руками. Workflow не удаляет и не перезаписывает серверный `.env`, если secret `VPS_ENV_FILE` пустой.
 
@@ -172,18 +180,15 @@ chmod 600 /home/deploy/.ssh/authorized_keys
 
 ### 5. Открыть firewall
 
+Задайте SSH-порт сервера. Значение должно совпадать с GitHub secret `VPS_PORT`.
+
 ```bash
-ufw allow 22/tcp
+SSH_PORT=2222
+ufw allow "${SSH_PORT}/tcp"
 ufw allow 80/tcp
 ufw allow 443/tcp
 ufw enable
 ufw status verbose
-```
-
-Если SSH на кастомном порту, вместо `22/tcp` откройте именно его. Например:
-
-```bash
-ufw allow 2222/tcp
 ```
 
 Если у VPS-провайдера есть отдельный firewall в панели, там тоже открыть:
@@ -215,15 +220,11 @@ Repository -> Settings -> Secrets and variables -> Actions -> New repository sec
 ```text
 VPS_HOST=SERVER_IP
 VPS_USER=deploy
-VPS_PORT=22
+VPS_PORT=2222
 VPS_PROJECT_DIR=/opt/wedding-rsvp
 ```
 
-Если SSH на кастомном порту, в `VPS_PORT` укажите его. Например:
-
-```text
-VPS_PORT=2222
-```
+В `VPS_PORT` укажите реальный SSH-порт сервера.
 
 `VPS_SSH_KEY` — приватный ключ целиком, например:
 
@@ -239,6 +240,7 @@ VPS_PORT=2222
 HTTP_PORT=80
 HTTPS_PORT=443
 CADDY_SITE_ADDRESS=example.com
+PUBLIC_SITE_URL=https://example.com
 POSTGRES_USER=rsvp
 POSTGRES_PASSWORD=change-this-database-password
 POSTGRES_DB=wedding_rsvp
@@ -247,6 +249,31 @@ ADMIN_PASSWORD=change-this-admin-password
 ```
 
 После этого любой `push` в репозиторий запустит `.github/workflows/deploy.yml`: файлы скопируются на VPS, `.env` создастся из `VPS_ENV_FILE`, контейнеры пересоберутся и перезапустятся.
+
+## Индексация сайта
+
+В проект добавлены:
+
+- `robots.txt` — разрешает индексацию главной страницы и закрывает `/admin`, `/api`, `/health`.
+- `sitemap.xml` — сообщает поисковикам адрес главной страницы.
+- `canonical` — закрепляет основной URL сайта.
+- Open Graph и Twitter meta-теги.
+- JSON-LD `Event` для описания свадебного события.
+
+`PUBLIC_SITE_URL` обязательно должен быть production-адресом с `https://`, иначе в `sitemap.xml` и `canonical` попадёт неправильный URL.
+
+После первого деплоя проверьте:
+
+```text
+https://example.com/robots.txt
+https://example.com/sitemap.xml
+```
+
+Чтобы сайт быстрее появился в поиске, добавьте домен в Яндекс Вебмастер и Google Search Console, затем отправьте sitemap:
+
+```text
+https://example.com/sitemap.xml
+```
 
 ## Проверка после первого деплоя
 

@@ -20,6 +20,8 @@ services:
   frontend:
     build:
       context: ./frontend
+      args:
+        PUBLIC_SITE_URL: ${PUBLIC_SITE_URL:-http://localhost}
     restart: unless-stopped
 
   backend:
