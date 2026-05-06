@@ -1,0 +1,93 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - "**"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-vps
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install deploy tools
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y rsync openssh-client
+
+      - name: Configure SSH
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          set -euo pipefail
+          SSH_PORT="${VPS_PORT:-22}"
+
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "$SSH_PORT" "$VPS_HOST" >> ~/.ssh/known_hosts
+
+      - name: Upload project files
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PROJECT_DIR: ${{ secrets.VPS_PROJECT_DIR }}
+        run: |
+          set -euo pipefail
+          SSH_PORT="${VPS_PORT:-22}"
+          PROJECT_DIR="${VPS_PROJECT_DIR:-/opt/wedding-rsvp}"
+          REMOTE_PROJECT_DIR="$(printf '%q' "$PROJECT_DIR")"
+
+          ssh -i ~/.ssh/deploy_key -p "$SSH_PORT" "$VPS_USER@$VPS_HOST" "mkdir -p $REMOTE_PROJECT_DIR"
+          rsync -az --delete \
+            --exclude ".git/" \
+            --exclude ".env" \
+            --exclude "backend/node_modules/" \
+            -e "ssh -i ~/.ssh/deploy_key -p $SSH_PORT" \
+            ./ "$VPS_USER@$VPS_HOST:$PROJECT_DIR/"
+
+      - name: Start application
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PROJECT_DIR: ${{ secrets.VPS_PROJECT_DIR }}
+          VPS_ENV_FILE: ${{ secrets.VPS_ENV_FILE }}
+        run: |
+          set -euo pipefail
+          SSH_PORT="${VPS_PORT:-22}"
+          PROJECT_DIR="${VPS_PROJECT_DIR:-/opt/wedding-rsvp}"
+          ENV_FILE_B64="$(printf '%s' "${VPS_ENV_FILE:-}" | base64 -w 0)"
+          REMOTE_ENV="$(printf 'PROJECT_DIR=%q ENV_FILE_B64=%q' "$PROJECT_DIR" "$ENV_FILE_B64")"
+
+          ssh -i ~/.ssh/deploy_key -p "$SSH_PORT" "$VPS_USER@$VPS_HOST" "$REMOTE_ENV bash -s" <<'REMOTE_SCRIPT'
+          set -euo pipefail
+
+          cd "$PROJECT_DIR"
+
+          if [ -n "${ENV_FILE_B64:-}" ]; then
+            printf '%s' "$ENV_FILE_B64" | base64 -d > .env
+            chmod 600 .env
+          fi
+
+          if [ ! -f .env ]; then
+            echo "Missing .env in $PROJECT_DIR. Add GitHub secret VPS_ENV_FILE or create .env once during VPS setup." >&2
+            exit 1
+          fi
+
+          docker compose up --build -d --remove-orphans
+          docker compose ps
+          REMOTE_SCRIPT

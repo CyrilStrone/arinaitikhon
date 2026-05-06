@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Мы женимся!</title>
+    <meta name="description" content="Свадебное приглашение Тихона и Арины">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="overline">Вы дождались...</p>
+        <h1 id="hero-title" class="rainbow-title" aria-label="Мы женимся!">
+          <span>М</span><span>ы</span>
+          <span>ж</span><span>е</span><span>н</span><span>и</span><span>м</span><span>с</span><span>я</span><span>!</span>
+        </h1>
+
+        <div class="portrait">
+          <div class="heart heart-one">♥</div>
+          <div class="heart heart-two">♥</div>
+          <div class="heart heart-three">♥</div>
+          <img src="/assets/rings.svg" alt="" class="rings">
+          <div class="name-note">
+            <span class="name-blue">Тихон</span>
+            <span class="name-pink">Арина</span>
+          </div>
+        </div>
+
+        <button class="music-button" type="button" aria-pressed="false">
+          <span class="play-icon">▶</span>
+          <span>Включить музыку<br>для атмосферы</span>
+        </button>
+      </section>
+
+      <section class="intro" aria-labelledby="intro-title">
+        <h2 id="intro-title" class="rainbow-heading">
+          <span>Д</span><span>о</span><span>р</span><span>о</span><span>г</span><span>и</span><span>е</span>
+          <span>н</span><span>а</span><span>ш</span><span>и</span><br>
+          <span>г</span><span>о</span><span>с</span><span>т</span><span>и</span>
+        </h2>
+        <p>Мы приглашаем вас разделить<br>с нами одно из важных событий —</p>
+        <p class="accent">нашу свадьбу</p>
+
+        <div class="date-card" aria-label="Дата свадьбы 6 августа">
+          <span>04</span>
+          <span>05</span>
+          <strong>06</strong>
+          <span>07</span>
+          <span>08</span>
+          <small>августа</small>
+        </div>
+      </section>
+
+      <section class="places" aria-label="Места проведения">
+        <article>
+          <p>Регистрация брака состоится в Доме<br>семейных торжеств по адресу:</p>
+          <strong>г. Красноярск, Проспект Мира, 24г</strong>
+        </article>
+        <article>
+          <p>Праздничный ужин пройдёт в банкетном зале</p>
+          <strong>Grenada park</strong>
+          <p>г. Красноярск, Свердловский район,<br>Базайская 347/1</p>
+        </article>
+      </section>
+
+      <section class="program" aria-labelledby="program-title">
+        <h2 id="program-title" class="rainbow-heading">
+          <span>П</span><span>р</span><span>о</span><span>г</span><span>р</span><span>а</span><span>м</span><span>м</span><span>а</span>
+          <span>д</span><span>н</span><span>я</span>
+        </h2>
+        <ol class="timeline">
+          <li>
+            <time>11:15</time>
+            <span>Торжественная<br>церемония в ЗАГСе</span>
+          </li>
+          <li>
+            <time>11:30</time>
+            <span>Прогулка с фотографом</span>
+          </li>
+          <li>
+            <time>17:00</time>
+            <span>Фуршет</span>
+          </li>
+          <li>
+            <time>18:00</time>
+            <span>Начало банкета</span>
+          </li>
+        </ol>
+      </section>
+
+      <section class="rsvp" aria-labelledby="rsvp-title">
+        <h2 id="rsvp-title" class="rainbow-heading">
+          <span>А</span><span>н</span><span>к</span><span>е</span><span>т</span><span>а</span>
+        </h2>
+        <p>Просим вас сообщить, сможете ли вы быть<br>с нами, заполнив форму ниже до 06.07.26:</p>
+
+        <form id="rsvp-form" class="form" novalidate>
+          <label class="field">
+            <span>Имя и фамилия</span>
+            <input id="fullName" name="fullName" type="text" autocomplete="name" maxlength="120" required>
+          </label>
+
+          <fieldset>
+            <legend>Подтвердите присутствие на торжестве</legend>
+            <label><input type="radio" name="attendance" value="yes" required> Смогу прийти</label>
+            <label><input type="radio" name="attendance" value="no"> Не смогу прийти</label>
+            <label><input type="radio" name="attendance" value="later"> Сообщу позже</label>
+          </fieldset>
+
+          <label class="field">
+            <span>Есть ли у вас аллергические реакции или ограничения по питанию?</span>
+            <textarea id="allergies" name="allergies" rows="3" maxlength="1000"></textarea>
+          </label>
+
+          <fieldset>
+            <legend>Предпочтения по напиткам</legend>
+            <label><input type="checkbox" name="drinks" value="champagne"> Шампанское</label>
+            <label><input type="checkbox" name="drinks" value="red_wine"> Красное вино</label>
+            <label><input type="checkbox" name="drinks" value="white_wine"> Белое вино</label>
+            <label><input type="checkbox" name="drinks" value="cognac"> Коньяк</label>
+            <label><input type="checkbox" name="drinks" value="non_alcoholic"> Безалкогольные напитки</label>
+          </fieldset>
+
+          <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+          <button class="submit-button" type="submit">Отправить</button>
+        </form>
+      </section>
+
+      <section class="farewell" aria-label="До встречи">
+        <p>До скорой встречи!</p>
+        <p>С любовью,<br>Тихон и Арина</p>
+      </section>
+    </main>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

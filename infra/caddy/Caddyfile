@@ -1,0 +1,25 @@
+{
+    admin off
+}
+
+(app_proxy) {
+    encode zstd gzip
+
+    header {
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+    }
+
+    @backend path /api/* /admin /admin/* /health
+    handle @backend {
+        reverse_proxy backend:8080
+    }
+
+    handle {
+        reverse_proxy frontend:80
+    }
+}
+
+{$CADDY_SITE_ADDRESS} {
+    import app_proxy
+}

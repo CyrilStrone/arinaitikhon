@@ -1,0 +1,35 @@
+{
+  "eslint.enable": false,
+  "prettier.enable": false,
+  "editor.defaultFormatter": "biomejs.biome",
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[twig]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "editor.codeActionsOnSave": {
+    "source.action.useSortedProperties.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+  },
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    { "file": ".github/instructions/commit-rules.md" }
+  ],
+  "cSpell.words": [
+    "jenesei",
+    "sonner"
+  ],
+  "djlint.showInstallError": false
+}
