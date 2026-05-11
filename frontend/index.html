@@ -1,24 +1,30 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Мы женимся!</title>
-    <meta name="description" content="Свадебное приглашение Тихона и Арины">
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    <meta name="theme-color" content="#fffaf0">
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-    <link rel="apple-touch-icon" href="/assets/favicon.svg">
-    <link rel="canonical" href="__PUBLIC_SITE_URL__/">
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="ru_RU">
-    <meta property="og:site_name" content="Свадьба Тихона и Арины">
-    <meta property="og:title" content="Мы женимся!">
-    <meta property="og:description" content="Свадебное приглашение Тихона и Арины">
-    <meta property="og:url" content="__PUBLIC_SITE_URL__/">
-    <meta name="twitter:card" content="summary">
-    <script type="application/ld+json">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Свадьба Тихона и Арины</title>
+  <meta name="description" content="Свадебное приглашение Тихона и Арины">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#fbf6e7">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="apple-touch-icon" href="/assets/favicon.svg">
+  <link rel="canonical" href="__PUBLIC_SITE_URL__/">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Свадьба Тихона и Арины">
+  <meta property="og:title" content="Свадьба Тихона и Арины">
+  <meta property="og:description" content="Свадебное приглашение Тихона и Арины">
+  <meta property="og:url" content="__PUBLIC_SITE_URL__/">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Event",
@@ -52,144 +58,320 @@
         ]
       }
     </script>
-    <link rel="stylesheet" href="/styles.css">
-  </head>
-  <body>
-    <main class="page">
-      <section class="hero" aria-labelledby="hero-title">
-        <p class="overline">Вы дождались...</p>
-        <h1 id="hero-title" class="rainbow-title" aria-label="Мы женимся!">
-          <span>М</span><span>ы</span>
-          <span>ж</span><span>е</span><span>н</span><span>и</span><span>м</span><span>с</span><span>я</span><span>!</span>
-        </h1>
+  <link rel="stylesheet" href="/styles.css">
+</head>
 
-        <div class="portrait">
-          <div class="heart heart-one">♥</div>
-          <div class="heart heart-two">♥</div>
-          <div class="heart heart-three">♥</div>
-          <img src="/assets/rings.svg" alt="" class="rings">
-          <div class="name-note">
-            <span class="name-blue">Тихон</span>
-            <span class="name-pink">Арина</span>
-          </div>
+<body>
+  <div id="preloader" class="preloader" aria-live="polite">
+    <div class="preloader__veil"></div>
+    <p>Подождите, невеста поправляет фату...</p>
+    <strong id="preloader-percent">0%</strong>
+  </div>
+
+  <main class="page">
+    <section class="hero reveal" aria-labelledby="hero-title">
+      <img class="hero__asset hero__asset--calendar-frame" src="/assets/tilda/calendar-frame.png" alt="">
+      <img class="hero__asset hero__asset--rays" src="/assets/tilda/rays.png" alt="">
+      <img class="hero__asset hero__asset--crown" src="/assets/tilda/crown.png" alt="">
+      <img class="hero__asset hero__asset--sparkles" src="/assets/tilda/sparkles.png" alt="">
+      <img class="hero__asset hero__asset--bow-green" src="/assets/tilda/bow-green.png" alt="">
+      <img class="hero__asset hero__asset--sparkles-small" src="/assets/tilda/sparkles-small.png" alt="">
+      <img class="hero__asset hero__asset--heart-outline" src="/assets/tilda/heart-outline.png" alt="">
+      <h1 id="hero-title" class="hero__title">
+        Тихон
+        <span>+</span>
+        Арина
+        <span>=</span>
+      </h1>
+
+      <div class="hero__heart" aria-hidden="true">
+        <img class="hero__heart-art" src="/assets/tilda/hero-heart.png" alt="">
+      </div>
+
+      <button class="music-button" type="button" aria-pressed="false">
+        <img class="music-button__asset music-button__asset--heart-button" src="/assets/tilda/heart-button.png" alt="">
+        <img class="music-button__asset music-button__asset--icon-play" src="/assets/tilda/icon-play.png" alt="">
+        <img class="music-button__asset music-button__asset--icon-pause" src="/assets/tilda/icon-pause.png" alt="">
+        <span class="music-button__label">слушай сердцем</span>
+      </button>
+      <audio id="wedding-music" preload="none" loop>
+        <source src="/assets/audios/first.mp3" type="audio/mpeg">
+      </audio>
+    </section>
+
+    <section class="intro reveal" aria-labelledby="intro-title">
+      <img class="intro__doodle intro__doodle--left" src="/assets/tilda/heart-outline.png" alt="">
+      <img class="intro__doodle intro__doodle--right" src="/assets/tilda/sparkles-small.png" alt="">
+      <h2 id="intro-title" class="section-heading">Дорогие<br>друзья и родные!</h2>
+      <p>Скоро наступит самый важный день<wbr>в нашей жизни — мы станем семьей.</p>
+      <img class="intro__asset--heart-doodle" src="/assets/tilda/heart-doodle-top.png" alt="">
+      <p>Будем счастливы видеть вас
+        рядом<wbr>в этот особенный момент, чтобы вместе<wbr>создать теплые воспоминания, которые<wbr>останутся в наших сердцах навсегда.
+      </p>
+    </section>
+
+    <section class="calendar reveal" aria-labelledby="calendar-title">
+      <div class="calendar__frame">
+        <img class="calendar__art" src="/assets/tilda/border.webp" alt="">
+        <h2 id="calendar-title" class="section-heading">Август</h2>
+        <div class="calendar__weekdays" aria-hidden="true">
+          <span>пн</span>
+          <span>вт</span>
+          <span>ср</span>
+          <span>чт</span>
+          <span>пт</span>
+          <span>сб</span>
+          <span>вс</span>
         </div>
+        <div class="calendar__grid" aria-label="Свадьба состоится 6 августа 2026 года">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+          <span>4</span>
+          <span>5</span>
+          <span>6</span>
+          <strong>
+            7
+            <svg class="calendar__grid__icon" width="42" height="36" viewBox="0 0 42 36" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_10_46)">
+                <path
+                  d="M2.58463 14.2923C2.39392 13.9317 2.14616 13.5771 1.97343 13.2176C1.80074 12.8581 1.67023 12.398 1.53229 12.017C1.16488 11.0023 0.739377 9.97736 0.693298 8.8864C0.683073 8.64415 0.607362 8.3858 0.597816 8.14078C0.568587 7.12115 0.69759 6.08346 0.964358 5.1164C1.35449 3.70216 2.33672 3.18541 3.61237 2.70916C3.77304 2.66226 4.01196 2.67163 4.16784 2.63368C4.53654 2.51723 5.1565 2.57594 5.48835 2.50003C6.04625 2.37242 6.39986 2.61424 6.84511 2.57939C7.93499 2.49409 8.83343 2.65617 9.89691 2.95496C11.2943 3.34762 12.504 4.19479 13.732 4.94206C14.1316 5.24322 14.4994 5.60463 14.874 5.93702C14.9725 6.02448 15.5075 6.44718 15.5509 6.51713C15.8834 7.05297 16.2626 7.33648 16.7253 7.74809C16.9091 7.98433 17.0913 8.26129 17.2542 8.51087C17.5847 9.01704 18.129 9.43749 18.483 9.88834C19.073 10.6398 19.4905 11.4166 20.5011 11.7182C21.4806 11.408 21.5863 10.8029 22.3554 10.1989C22.6294 9.98376 22.8864 9.58644 23.1748 9.37094C24.0715 8.77853 24.6496 8.25439 25.5703 7.65637C26.4971 7.05434 28.0228 6.56168 29.0106 5.99141C29.1343 5.92006 29.5338 5.91624 29.6884 5.83094C30.0056 5.79086 30.6272 5.44276 30.9161 5.41636C31.4832 5.36453 31.9819 5.10705 32.4971 5.01961C33.3189 4.88009 34.2435 4.73957 35.0746 4.64872C35.4043 4.61256 35.8029 4.68829 36.1374 4.68176C36.9181 4.55933 37.4271 4.67573 38.1564 5.01938C38.8807 5.36075 39.2097 5.81254 39.7248 6.38669C39.8127 6.36403 39.9556 6.33175 40.0366 6.30274L41.6652 9.12353C41.3784 9.39199 41.5458 9.61264 41.6125 9.93674C41.7855 10.7774 41.7045 11.554 41.3832 12.3473C40.8868 13.7606 40.0682 15.0599 39.0448 16.1514C38.8746 16.3329 38.6179 16.6786 38.4432 16.8195C37.9804 17.1928 37.6772 17.6115 37.2792 18.0406C37.0707 18.2654 36.7073 18.4555 36.4769 18.662C35.5687 19.4283 34.6049 20.2167 33.5635 20.7956C31.8216 21.728 29.9002 22.9254 28.1814 23.9271L26.4974 24.9163C26.2978 25.0312 25.6363 25.3929 25.4858 25.5159C25.8294 25.3802 26.82 24.6619 27.06 24.686C27.1878 24.6605 27.186 24.6381 27.2792 24.6846C27.2801 24.7108 27.2905 24.7631 27.2686 24.7772C26.1623 25.4996 24.9587 26.1047 23.838 26.8076C23.809 26.8259 23.7993 26.9003 23.7941 26.9347L17.8953 30.3404C17.8172 30.2661 17.7059 30.1947 17.6154 30.1327C17.3512 30.2553 17.0009 30.3818 16.7234 30.4876C15.8717 30.2532 16.0272 29.961 15.6935 29.2686C15.5585 28.947 15.1673 28.7065 14.9839 28.4538C14.5544 27.862 14.1494 27.4383 13.5571 27.0014C13.3888 26.833 13.2428 26.603 13.0612 26.4508C12.4773 25.9614 11.9044 25.4505 11.2919 24.9985C10.8006 24.6358 10.0097 23.6127 9.46828 23.4608C9.06684 22.9175 8.62801 22.4942 8.12616 22.0527C7.93319 21.8531 7.77311 21.6181 7.58455 21.4142C7.29926 21.1058 6.95536 20.8636 6.73022 20.5058C6.62145 20.3267 6.49411 20.1675 6.36989 20.0008C5.8781 19.341 5.2935 18.7099 4.7934 18.0664C4.4616 17.6394 4.14977 16.9904 3.86982 16.5134C3.44613 15.7703 3.01773 15.0299 2.58463 14.2923ZM37.2728 9.62353C37.338 9.44918 37.4348 9.35937 37.5583 9.22157C37.3953 8.815 37.2355 8.52518 36.7934 8.37085C35.7031 7.99041 34.6106 8.04622 33.6521 8.672C33.274 8.94852 33.4848 9.15298 33.6527 9.48747C33.7337 9.64887 33.8463 9.84727 33.951 9.99254C34.6095 10.9064 36.6807 10.4257 37.2728 9.62353ZM6.37333 13.7212C6.30112 13.9781 6.65696 15.0843 6.91685 15.2501C7.09508 15.2746 7.13016 15.2498 7.23624 15.3782C7.43234 15.6156 7.64595 16.0357 7.83951 16.2524C7.99348 16.5239 8.17811 16.9268 8.49471 16.994C8.61939 17.0205 9.02391 16.934 9.00972 16.7933C8.94465 16.1467 7.07982 13.5579 6.55345 13.5411C6.46483 13.5635 6.42534 13.6443 6.37333 13.7212Z"
+                  fill="#AD1C1E" />
+              </g>
+              <defs>
+                <clipPath id="clip0_10_46">
+                  <rect width="41.4844" height="36" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
 
-        <button class="music-button" type="button" aria-pressed="false">
-          <span class="play-icon">▶</span>
-          <span class="music-label">Включить музыку<br>для атмосферы</span>
-        </button>
-        <audio id="wedding-music" preload="none" loop>
-          <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/5/59/Kevin_MacLeod_-_Canon_in_D_Major.ogg/Kevin_MacLeod_-_Canon_in_D_Major.ogg.mp3" type="audio/mpeg">
-          <source src="https://upload.wikimedia.org/wikipedia/commons/5/59/Kevin_MacLeod_-_Canon_in_D_Major.ogg" type="audio/ogg">
-        </audio>
-        <p class="music-credit">
-          Музыка:
-          <a href="https://commons.wikimedia.org/wiki/File:Kevin_MacLeod_-_Canon_in_D_Major.ogg" target="_blank" rel="noopener noreferrer">Canon in D Major</a>,
-          Kevin MacLeod,
-          <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener noreferrer">CC BY 3.0</a>
-        </p>
-      </section>
-
-      <section class="intro" aria-labelledby="intro-title">
-        <h2 id="intro-title" class="rainbow-heading">
-          <span>Д</span><span>о</span><span>р</span><span>о</span><span>г</span><span>и</span><span>е</span>
-          <span>н</span><span>а</span><span>ш</span><span>и</span><br>
-          <span>г</span><span>о</span><span>с</span><span>т</span><span>и</span>
-        </h2>
-        <p>Мы приглашаем вас разделить<br>с нами одно из важных событий —</p>
-        <p class="accent">нашу свадьбу</p>
-
-        <div class="date-card" aria-label="Дата свадьбы 6 августа">
-          <span>05</span>
-          <span>06</span>
-          <strong>07</strong>
-          <span>08</span>
-          <span>09</span>
-          <small>августа</small>
+          </strong>
+          <span>8</span>
+          <span>9</span>
+          <span>10</span>
+          <span>11</span>
+          <span>12</span>
+          <span>13</span>
+          <span>14</span>
+          <span>15</span>
+          <span>16</span>
+          <span>17</span>
+          <span>18</span>
+          <span>19</span>
+          <span>20</span>
+          <span>21</span>
+          <span>22</span>
+          <span>23</span>
+          <span>24</span>
+          <span>25</span>
+          <span>26</span>
+          <span>27</span>
+          <span>28</span>
+          <span>29</span>
+          <span>30</span>
+          <span>31</span>
         </div>
-      </section>
+        <p class="calendar__date-note">пятница, 7 августа 2026</p>
+      </div>
+    </section>
 
-      <section class="places" aria-label="Места проведения">
-        <article>
-          <p>Регистрация брака состоится в Доме<br>семейных торжеств по адресу:</p>
-          <strong>г. Красноярск, Проспект Мира, 24г</strong>
+    <section class="locations reveal" aria-labelledby="locations-title">
+      <div class="locations__lights" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <h2 id="locations-title" class="section-heading">Локация</h2>
+      <img class="locations__doodle locations__doodle--right" src="/assets/tilda/couple-walking.png" alt="">
+      <div class="locations__stack">
+        <img class="locations__asset-heart-cluster" src="/assets/tilda/heart-cluster.png" alt="">
+        <article class="location-card location-card--left">
+          <p>Регистрация пройдет по адресу:</p>
+          <strong>г. Красноярск,<wbr>Проспект Мира, 24г</strong>
+          <a href="https://yandex.ru/maps/?text=%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D0%BE%D1%8F%D1%80%D1%81%D0%BA%2C%20%D0%9F%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9C%D0%B8%D1%80%D0%B0%2C%2024%D0%B3"
+            target="_blank" rel="noopener noreferrer">построить маршрут</a>
         </article>
-        <article>
-          <p>Праздничный ужин пройдёт в банкетном зале</p>
-          <strong>Grenada park</strong>
-          <p>г. Красноярск, Свердловский район,<br>Базайская 347/1</p>
+        <article class="location-card location-card--right">
+          <p>Банкет пройдет в банкетном зале:</p>
+          <strong>Grenada park<wbr>Базайская 347/1</strong>
+          <a href="https://yandex.ru/maps/?text=%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D0%BE%D1%8F%D1%80%D1%81%D0%BA%2C%20%D0%91%D0%B0%D0%B7%D0%B0%D0%B9%D1%81%D0%BA%D0%B0%D1%8F%20347%2F1"
+            target="_blank" rel="noopener noreferrer">построить маршрут</a>
         </article>
-      </section>
+      </div>
+      <img class="locations__doodle locations__doodle--left" src="/assets/tilda/couple-walking.png" alt="">
+    </section>
 
-      <section class="program" aria-labelledby="program-title">
-        <h2 id="program-title" class="rainbow-heading">
-          <span>П</span><span>р</span><span>о</span><span>г</span><span>р</span><span>а</span><span>м</span><span>м</span><span>а</span>
-          <span>д</span><span>н</span><span>я</span>
-        </h2>
-        <ol class="timeline">
-          <li>
+    <section class="timing reveal" aria-labelledby="timing-title">
+      <h2 id="timing-title" class="section-heading">Тайминг</h2>
+      <ol class="timeline">
+        <li>
+          <span class="timeline__art timeline__art--rings" aria-hidden="true"></span>
+          <div>
+            <span class="timeline__label">сбор гостей в ЗАГСе</span>
             <time>11:15</time>
-            <span>Торжественная<br>церемония в ЗАГСе</span>
-          </li>
-          <li>
+            <p>встречаемся, обнимаемся</p>
+          </div>
+        </li>
+        <li>
+          <span class="timeline__art timeline__art--couple" aria-hidden="true"></span>
+          <div>
+            <span class="timeline__label">церемония</span>
             <time>11:30</time>
-            <span>Прогулка с фотографом</span>
-          </li>
-          <li>
+            <p>два «да» переплетаются в одно «навсегда»</p>
+          </div>
+        </li>
+        <li>
+          <span class="timeline__art timeline__art--table" aria-hidden="true"></span>
+          <div>
+            <span class="timeline__label">сбор гостей на банкет</span>
             <time>17:00</time>
-            <span>Фуршет</span>
-          </li>
-          <li>
+            <p>готовим аппетит и тосты</p>
+          </div>
+        </li>
+        <li>
+          <span class="timeline__art timeline__art--cake" aria-hidden="true"></span>
+          <div>
+            <span class="timeline__label">банкет</span>
             <time>18:00</time>
-            <span>Начало банкета</span>
-          </li>
-        </ol>
-      </section>
+            <p>время вкусной еды и развлечений</p>
+          </div>
+        </li>
+      </ol>
+    </section>
 
-      <section class="rsvp" aria-labelledby="rsvp-title">
-        <h2 id="rsvp-title" class="rainbow-heading">
-          <span>А</span><span>н</span><span>к</span><span>е</span><span>т</span><span>а</span>
-        </h2>
-        <p>Просим вас сообщить, сможете ли вы быть<br>с нами, заполнив форму ниже до 06.07.26:</p>
+    <section class="memories reveal" aria-labelledby="memories-title">
+      <div class="film-card">
+        <img class="film-card__art" src="/assets/tilda/film-frame.png" alt="">
+        <h2 id="memories-title" class="section-heading">Воспоминания</h2>
+        <p>Чтобы ни один трогательный момент этого дня не потерялся, делитесь фотографиями и видео после праздника.</p>
+        <a href="#rsvp-form">вступить в группу</a>
+      </div>
+      <p class="memories__signature">такая нежная любовь</p>
+    </section>
 
-        <form id="rsvp-form" class="form" novalidate>
-          <label class="field">
-            <span>Имя и фамилия</span>
-            <input id="fullName" name="fullName" type="text" autocomplete="name" maxlength="120" required>
-          </label>
+    <section class="rsvp reveal" aria-labelledby="rsvp-title">
+      <img class="rsvp__bird" src="/assets/tilda/dove.png" alt="">
+      <img class="rsvp_glass-hand" src="/assets/tilda/glass-hand.png" alt="">
+      <img class="rsvp__doodle rsvp__doodle--top" src="/assets/tilda/jar-hand.png" alt="">
+      <img class="rsvp__doodle rsvp__doodle--bottom" src="/assets/tilda/wine-hand.png" alt="">
+      <h2 id="rsvp-title" class="section-heading">Анкета</h2>
+      <p>Для того чтобы подготовиться к торжеству и обеспечить комфорт всем присутствующим, просим заполнить нашу анкету
+        до 01.08.26.</p>
 
-          <fieldset>
-            <legend>Подтвердите присутствие на торжестве</legend>
-            <label><input type="radio" name="attendance" value="yes" required> Смогу прийти</label>
-            <label><input type="radio" name="attendance" value="no"> Не смогу прийти</label>
-            <label><input type="radio" name="attendance" value="later"> Сообщу позже</label>
-          </fieldset>
+      <form id="rsvp-form" class="rsvp-form" novalidate>
+        <label class="rsvp-form__field">
+          <span>Имя Фамилия</span>
+          <input id="fullName" name="fullName" type="text" autocomplete="name" maxlength="120" required>
+        </label>
 
-          <label class="field">
-            <span>Есть ли у вас аллергические реакции или ограничения по питанию?</span>
-            <textarea id="allergies" name="allergies" rows="3" maxlength="1000"></textarea>
-          </label>
+        <label class="rsvp-form__field">
+          <span>Введите свой номер телефона</span>
+          <input id="phone" name="phone" type="text" autocomplete="tel" maxlength="120" required>
+        </label>
 
-          <fieldset>
-            <legend>Предпочтения по напиткам</legend>
-            <label><input type="checkbox" name="drinks" value="champagne"> Шампанское</label>
-            <label><input type="checkbox" name="drinks" value="red_wine"> Красное вино</label>
-            <label><input type="checkbox" name="drinks" value="white_wine"> Белое вино</label>
-            <label><input type="checkbox" name="drinks" value="cognac"> Коньяк</label>
-            <label><input type="checkbox" name="drinks" value="non_alcoholic"> Безалкогольные напитки</label>
-          </fieldset>
+        <fieldset class="rsvp-form__group">
+          <legend>Подтвердите свое присутствие</legend>
+          <label class="rsvp-form__choice"><input type="radio" name="attendance" value="yes" required> <span>Да, с
+              радостью приду</span></label>
+          <label class="rsvp-form__choice"><input type="radio" name="attendance" value="no"> <span>К сожалению, не смогу
+              прийти</span></label>
+        </fieldset>
 
-          <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
-          <button class="submit-button" type="submit">Отправить</button>
-        </form>
-      </section>
+        <div class="rsvp-form__group">
+          <div class="rsvp-form__group-title">Гости</div>
+          <div id="guest-list" class="rsvp-form__guest-list" aria-live="polite"></div>
+          <button id="add-guest" class="rsvp-form__guest-add" type="button">
+            <span aria-hidden="true">+</span>
+            Добавить гостя
+          </button>
+        </div>
 
-      <section class="farewell" aria-label="До встречи">
-        <p>До скорой встречи!</p>
-        <p>С любовью,<br>Тихон и Арина</p>
-      </section>
-    </main>
+        <fieldset class="rsvp-form__group">
+          <legend>Ваши предпочтения в напитках</legend>
+          <label class="rsvp-form__choice"><input type="checkbox" name="drinks" value="white_dry_wine"> <span>Белое
+              сухое вино</span></label>
+          <label class="rsvp-form__choice"><input type="checkbox" name="drinks" value="white_semi_dry_wine"> <span>Белое
+              полусухое вино</span></label>
+          <label class="rsvp-form__choice"><input type="checkbox" name="drinks" value="white_semi_sweet_wine">
+            <span>Белое полусладкое вино</span></label>
+          <label class="rsvp-form__choice"><input type="checkbox" name="drinks" value="red_dry_wine"> <span>Красное
+              сухое вино</span></label>
+          <label class="rsvp-form__choice"><input type="checkbox" name="drinks" value="red_semi_sweet_wine">
+            <span>Красное полусладкое вино</span></label>
+          <label class="rsvp-form__choice"><input type="checkbox" name="drinks" value="champagne">
+            <span>Шампанское</span></label>
+          <label class="rsvp-form__choice"><input type="checkbox" name="drinks" value="prosecco_dry"> <span>Игристое
+              сухое (просекко)</span></label>
+          <label class="rsvp-form__choice"><input type="checkbox" name="drinks" value="strong_alcohol"> <span>Крепкий
+              алкоголь</span></label>
+          <label class="rsvp-form__choice"><input type="checkbox" name="drinks" value="no_alcohol"> <span>Не буду пить
+              алкоголь</span></label>
+          <div class="rsvp-form__inline-option">
+            <label class="rsvp-form__choice"><input id="drink-other-toggle" type="checkbox" name="drinks" value="other">
+              <span>Другое</span></label>
+            <input id="drink-other" class="rsvp-form__inline-input" name="drinkOther" type="text" maxlength="120"
+              placeholder="Укажите напиток" disabled hidden>
+          </div>
+        </fieldset>
 
-    <script src="/app.js" defer></script>
-  </body>
+        <fieldset class="rsvp-form__group">
+          <legend>Есть ли у Вас аллергия на какие-либо продукты?</legend>
+          <label class="rsvp-form__choice"><input type="radio" name="hasAllergies" value="no" required>
+            <span>Нет</span></label>
+          <div class="rsvp-form__inline-option">
+            <label class="rsvp-form__choice"><input id="allergy-yes" type="radio" name="hasAllergies" value="yes">
+              <span>Да</span></label>
+            <input id="allergies" class="rsvp-form__inline-input" name="allergies" type="text" maxlength="500"
+              placeholder="Укажите без точек и запятых" disabled hidden>
+          </div>
+        </fieldset>
+
+        <label class="rsvp-form__field">
+          <span>Напишите песню для плейлиста, под которую хотелось бы потанцевать</span>
+          <textarea id="playlistSong" name="playlistSong" rows="4" maxlength="1000"></textarea>
+        </label>
+
+        <p id="form-message" class="rsvp-form__message" role="status" aria-live="polite"></p>
+        <button class="rsvp-form__submit" type="submit">Отправить</button>
+      </form>
+    </section>
+
+    <section class="farewell reveal" aria-label="До встречи">
+      <h2 class="section-heading">До встречи!</h2>
+      <div class="farewell__countdown countdown" data-countdown-target="2026-08-06T11:15:00+07:00"
+        aria-label="Обратный отсчет до свадьбы">
+        <div class="countdown__unit">
+          <span class="countdown__value" data-countdown-days>00</span>
+          <span class="countdown__label">дней</span>
+        </div>
+        <span class="countdown__separator" aria-hidden="true">:</span>
+        <div class="countdown__unit">
+          <span class="countdown__value" data-countdown-hours>00</span>
+          <span class="countdown__label">часов</span>
+        </div>
+        <span class="countdown__separator" aria-hidden="true">:</span>
+        <div class="countdown__unit">
+          <span class="countdown__value" data-countdown-minutes>00</span>
+          <span class="countdown__label">минут</span>
+        </div>
+        <span class="countdown__separator" aria-hidden="true">:</span>
+        <div class="countdown__unit">
+          <span class="countdown__value" data-countdown-seconds>00</span>
+          <span class="countdown__label">секунд</span>
+        </div>
+      </div>
+      <div class="farewell__photo" aria-hidden="true">
+        <img src="/assets/tilda/solid-heart.png" alt="">
+        <img src="/assets/rings.svg" alt="">
+      </div>
+    </section>
+  </main>
+
+  <script src="/app.js" defer></script>
+</body>
+
 </html>
