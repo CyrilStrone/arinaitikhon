@@ -96,6 +96,59 @@ PUBLIC_SITE_URL=https://xn--e1aybc.xn--p1ai
 
 Второй вариант: создать `/opt/wedding-rsvp/.env` на сервере один раз руками. Workflow не удаляет и не перезаписывает серверный `.env`, если secret `VPS_ENV_FILE` пустой.
 
+## Как поменять пароли на сервере
+
+Все пароли задаются через `.env`:
+
+```env
+POSTGRES_PASSWORD=change-this-database-password
+ADMIN_PASSWORD=change-this-admin-password
+```
+
+Если используется GitHub secret `VPS_ENV_FILE`, поменяйте значения в этом secret и запустите деплой заново: сделайте `push` в GitHub или запустите workflow вручную.
+
+Если `.env` лежит на сервере вручную:
+
+```bash
+ssh deploy@SERVER_IP
+cd /opt/wedding-rsvp
+nano .env
+docker compose up -d --build
+```
+
+Для смены пароля админки достаточно поменять `ADMIN_PASSWORD` и перезапустить контейнеры:
+
+```bash
+docker compose up -d --build
+```
+
+Для смены `POSTGRES_PASSWORD` у уже созданной базы одного изменения `.env` недостаточно: Postgres хранит пароль пользователя внутри существующего volume. Есть два варианта.
+
+Вариант 1: база не нужна, можно начать с пустой:
+
+```bash
+docker compose down -v --remove-orphans
+docker compose up -d --build
+```
+
+Вариант 2: данные нужно сохранить. Сначала поменяйте пароль пользователя в самой базе, потом обновите `.env` на такое же значение:
+
+```bash
+docker compose exec db psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "ALTER USER \"$POSTGRES_USER\" WITH PASSWORD 'NEW_DATABASE_PASSWORD';"
+```
+
+После этого в `.env` укажите тот же пароль:
+
+```env
+POSTGRES_PASSWORD=NEW_DATABASE_PASSWORD
+```
+
+И перезапустите сервисы:
+
+```bash
+docker compose up -d --build
+```
+
 ## Подготовка VPS один раз
 
 Пример для Ubuntu 22.04/24.04. Эти команды нужны только для первичной подготовки сервера. После этого деплой идёт через GitHub Actions без ручных команд на сервере.
