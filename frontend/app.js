@@ -1,5 +1,6 @@
 const preloader = document.querySelector("#preloader");
 const preloaderPercent = document.querySelector("#preloader-percent");
+const themeColorMeta = document.querySelector("meta[name='theme-color']");
 const form = document.querySelector("#rsvp-form");
 const message = document.querySelector("#form-message");
 const submitButton = form?.querySelector("button[type='submit']");
@@ -16,6 +17,11 @@ const allergiesInput = document.querySelector("#allergies");
 const countdown = document.querySelector(".countdown");
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const themeColor = getComputedStyle(document.documentElement).getPropertyValue("--paper").trim();
+
+if (themeColorMeta && themeColor) {
+  themeColorMeta.setAttribute("content", themeColor);
+}
 
 const resetInitialScroll = () => {
   if (window.location.hash) {

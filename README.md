@@ -250,6 +250,33 @@ ADMIN_PASSWORD=change-this-admin-password
 
 После этого любой `push` в репозиторий запустит `.github/workflows/deploy.yml`: файлы скопируются на VPS, `.env` создастся из `VPS_ENV_FILE`, контейнеры пересоберутся и перезапустятся.
 
+## Сброс проекта на VPS до пустой базы
+
+Эти команды удаляют данные Postgres. После этого анкеты из `/admin` пропадут, а база создастся заново при следующем запуске.
+
+Быстрый сброс только Docker-данных проекта:
+
+```bash
+ssh deploy@SERVER_IP
+cd /opt/wedding-rsvp
+docker compose down -v --remove-orphans
+docker compose up -d --build
+```
+
+Полное удаление проекта с сервера:
+
+```bash
+ssh root@SERVER_IP
+cd /opt/wedding-rsvp
+docker compose down -v --remove-orphans
+cd /opt
+rm -rf /opt/wedding-rsvp
+mkdir -p /opt/wedding-rsvp
+chown -R deploy:deploy /opt/wedding-rsvp
+```
+
+После полного удаления запустите деплой заново: сделайте `push` в GitHub или запустите workflow вручную. Если secret `VPS_ENV_FILE` заполнен, `.env` на VPS создастся автоматически. Если `VPS_ENV_FILE` пустой, перед деплоем снова создайте `/opt/wedding-rsvp/.env` руками.
+
 ## Индексация сайта
 
 В проект добавлены:
